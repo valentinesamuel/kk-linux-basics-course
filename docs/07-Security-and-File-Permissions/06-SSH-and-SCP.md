@@ -25,6 +25,8 @@
     ssh –l <user> <hostname OR IP Address>
     ```
 
+    The remote server should have an SSH service running on port `22` and accessible from the client
+
   #### Password-Less Authentication
 
   - Passwordless authentication can be setup via key-pair authentication in order to login to the remote server with password.

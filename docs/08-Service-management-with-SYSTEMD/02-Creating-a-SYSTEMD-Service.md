@@ -48,6 +48,21 @@ In this lecture we will learn how to create a SYSTEMD Service.
     WantedBy=graphical.target
     ```
 
+  #### 4. Check service status
+
+- To check whether the system is up and running 
+```bash
+  [~]$ systemctl start project-mecury.service
+  * project-mecury.service
+      Loaded: loaded (/etc/systemd/system/ report-manager; statis; vendor preset: enabled)
+      Active: active (running) Fri 2020-04-10 00:52:16 EDT; 6min ago
+      Main PID: 25041 (project-mecury.sh)
+      Tasks: 2 (limit: 4915)
+      CGroup: /system.slice/ project-mecury.service
+            |- 6494 sleep 60
+            |_ 25041 /bin/bach /us/bin/project-memory.sh
+```
+
 #### How to Start the Service now ?
 
 - The system to detect the changes you have done in the file, we need to reload the daemon and start the service.

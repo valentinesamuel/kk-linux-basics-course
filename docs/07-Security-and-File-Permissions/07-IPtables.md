@@ -46,7 +46,7 @@ sudo iptables -A INPUT -p TCP -s 172.16.238.187 --dport 80 -j ACCEPT
 ```
 
 The -A or --append option appends the rule at the end of the selected chain.
-The -s or --source option Source specification.
+The -s or --source option Source specification. This is the source IP or range from which you want the connection to be permitted. This is the IP address of the client.
 The -j, --jump option specifies the target of the rule.
 The -p, --protocol option defines protocol of the rule or the packet to check
 The --dport or --destination-port refers to the destination port.
@@ -157,6 +157,12 @@ num  target     prot opt source               destination
 ```
 sudo iptables -D INPUT 3
 ```
+
+- To add a rule to the first position in the chain
+```
+bob@devapp01:~$ sudo iptables -I OUTPUT -p tch -d 172.16.238.100 --dport 443 -j ACCEPT
+```
+
 - To display the **line number** for the rules,
 
 ```
@@ -176,6 +182,16 @@ num  target     prot opt source               destination
 3    ACCEPT     tcp  --  anywhere             caleston-repo-01     tcp dpt:http
 4    DROP       tcp  --  anywhere             anywhere             tcp dpt:http
 5    DROP       tcp  --  anywhere             anywhere             tcp dpt:https
+```
+
+- On devapp01, add an outgoing rule permitting access to port 5432 on devdb01 and HTTP access to caleston-repo-01. Once this is done, block outgoing traffic to any destination on http/https ports from devapp01
+Note: caleston-repo-01 has the ip address of 172.16.238.15
+```bash
+sudo iptables -A OUTPUT -p TCP -d 172.16.238.11 --dport 5432 -j ACCEPT
+sudo iptables -A OUTPUT -p TCP -d 172.16.238.15 --dport 80 -j ACCEPT
+
+sudo iptables -A OUTPUT -p tcp --dport 80 -j DROP
+sudo iptables -A OUTPUT -p tcp --dport 443 -j DROP
 ```
 
 - Allow Multiple Ports on IPtables using **`Multiport`**

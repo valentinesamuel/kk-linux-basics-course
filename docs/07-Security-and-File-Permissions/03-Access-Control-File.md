@@ -15,6 +15,8 @@
     bob:x:1002:1002::/home/bob:/bin/sh
     USERNAME:PASSWORD:UID:GID:GECOS:HOMEDIR:SHELL
     ```
+
+    > GECOS is a CSV file that contains a list of user information like gullname, location, phone number etc. It is optional and can be blank
    
     ![passwd](../../images//passwd.PNG)
 
@@ -38,6 +40,13 @@
     ```
 
     ![egp](../../images//egp.PNG)
+
+- **MINAGE** is the minimum number of days that the user is required to wait before they can change their password
+- **MAXAGE** is the maximum number of days allowed before they have to change their password
+- **WARN** is the number of days before they have to change their password before they get warned about their password expiration
+- **INACTIVE**  is the number of dats after password expiration but should still be accepted before it gets disabbled
+- **EXPDATE** - is the data of expiration of the password
+
 
 # HANDS-ON LABS
 

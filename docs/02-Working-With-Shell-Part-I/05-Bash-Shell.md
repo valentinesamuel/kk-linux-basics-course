@@ -19,7 +19,7 @@ $ echo $SHELL
 
 To change the default shell. Use the command chsh, you will be prompted for the password and following that input the name of the new shell. You have to login into new terminal session to see this change though.
 ```
-$ chsh
+$ `chsh`
 ```
 
 ## Bash Shell Features
